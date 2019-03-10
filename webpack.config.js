@@ -1,5 +1,4 @@
 const path = require("path")
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
@@ -21,14 +20,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(j|t)sx?$/,
         use: "babel-loader",
         exclude: /node_modules/
       },
       {
-        test: /\.tsx?$/,
-        use: ["babel-loader", "tslint-loader"],
-        exclude: /node_modules/
+        test: /\.(j|t)sx?$/,
+        use: "react-hot-loader/webpack",
+        include: /node_modules/
       },
       {
         test: /\.html$/,
@@ -37,7 +36,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ async: false }),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     })

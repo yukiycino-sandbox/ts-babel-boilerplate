@@ -1,7 +1,7 @@
 import React from "react"
-import { hot } from "react-hot-loader"
+import { hot } from "react-hot-loader/root"
 
-import Child from "components/Child"
+import Child from "./components/Child"
 
 const App = () => {
   return (
@@ -12,4 +12,4 @@ const App = () => {
   )
 }
 
-export default hot(module)(App)
+export default hot(App)
